@@ -1,0 +1,114 @@
+.contact {
+  padding: 60px 8%;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.section-title {
+  text-align: center;
+  font-size: 32px;
+  margin-bottom: 28px;
+  color: var(--accent);
+}
+
+.contact-form {
+  max-width: 800px;
+  margin: 0 auto;
+  display: grid;
+  gap: 16px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.field span {
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.field input,
+.field textarea {
+  background: var(--panel);
+  border: 1px solid var(--muted-border);
+  padding: 12px 14px;
+  border-radius: 8px;
+  color: var(--text);
+  font-size: 15px;
+  outline: none;
+  transition: box-shadow 0.18s ease, transform 0.12s ease;
+}
+
+.field input:focus,
+.field textarea:focus {
+  box-shadow: 0 6px 18px rgba(0, 229, 255, 0.06);
+  transform: translateY(-2px);
+  border-color: rgba(0,229,255,0.18);
+}
+
+.form-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 6px;
+}
+
+.btn-primary,
+.btn-outline {
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  font-size: 14px;
+}
+
+/* Primary */
+.btn-primary {
+  background: linear-gradient(90deg, var(--accent) 0%, var(--accent-2) 100%);
+  color: #000;
+}
+
+/* Outline */
+.btn-outline {
+  background: transparent;
+  color: var(--accent);
+  border: 1px solid rgba(0,229,255,0.18);
+}
+
+/* Disabled style */
+button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* status messages */
+.form-status {
+  margin-top: 6px;
+  font-size: 14px;
+  padding: 10px 12px;
+  border-radius: 8px;
+}
+
+.form-status.success {
+  background: rgba(0, 200, 120, 0.1);
+  color: #90f0b8;
+  border: 1px solid rgba(144, 240, 184, 0.12);
+}
+
+.form-status.error {
+  background: rgba(255, 60, 60, 0.06);
+  color: #ffa7a7;
+  border: 1px solid rgba(255, 60, 60, 0.08);
+}
+
+/* small screens */
+@media (max-width: 600px) {
+  .form-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}

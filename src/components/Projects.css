@@ -1,0 +1,190 @@
+/* Pagination styles */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 2rem;
+}
+
+.pagination-btn {
+  background: var(--color-bg-secondary, #f0f0f0);
+  color: var(--color-primary, #333);
+  border: 1px solid var(--color-primary, #333);
+  border-radius: 4px;
+  padding: 0.4rem 1rem;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.2s, color 0.2s;
+}
+
+.pagination-btn.active,
+.pagination-btn:hover:not(:disabled) {
+  background: var(--color-primary, #333);
+  color: var(--color-bg, #fff);
+}
+
+.pagination-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.projects {
+  padding: 60px 8%;
+  background: var(--bg-dark);
+  color: var(--text);
+}
+
+.section-title {
+  text-align: center;
+  font-size: 32px;
+  margin-bottom: 36px;
+  color: var(--accent);
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+  align-items: stretch;
+  /* Make each grid row take equal height so cards match even when a row has fewer items */
+  grid-auto-rows: 1fr;
+}
+
+.project-card {
+  background: linear-gradient(180deg, var(--panel) 0%, var(--panel-2) 100%);
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--muted-border);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  /* Ensure card fills the grid cell height */
+  height: 100%;
+}
+
+.project-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+}
+
+.img-wrap {
+  width: 100%;
+  height: 180px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg);
+  /* Keep image area consistent and prevent body from collapsing */
+  flex: 0 0 180px;
+}
+
+.img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Body */
+.project-body {
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: 1;
+}
+
+.project-title {
+  margin: 0;
+  font-size: 20px;
+  color: var(--text);
+}
+
+.project-desc {
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+/* Tech pills */
+.project-tech {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.tech-pill {
+  background: var(--accent-transparent);
+  color: var(--accent);
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  border: 1px solid var(--accent-border);
+}
+
+/* Links */
+.project-links {
+  margin-top: auto;
+  display: flex;
+  gap: 10px;
+}
+
+.btn-primary,
+.btn-outline {
+  padding: 8px 12px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+/* Primary (repo) */
+.btn-primary {
+  background: linear-gradient(90deg, var(--accent) 0%, var(--accent-2) 100%);
+  color: #000;
+  border: none;
+}
+
+/* Outline (live) */
+.btn-outline {
+  background: transparent;
+  color: var(--accent);
+  border: 1px solid rgba(0,229,255,0.18);
+}
+
+/* Disabled look */
+.disabled {
+  opacity: 1;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Make disabled primary buttons appear muted but keep size consistent */
+.btn-primary.disabled {
+  background: rgba(255,255,255,0.04);
+  color: rgba(255,255,255,0.55);
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
+/* Make disabled outline buttons appear muted */
+.btn-outline.disabled {
+  background: transparent;
+  color: rgba(0,229,255,0.25);
+  border: 1px solid rgba(0,229,255,0.06);
+}
+
+/* Responsive tweaks */
+@media (max-width: 520px) {
+  .img-wrap {
+    height: 150px;
+  }
+  .project-title {
+    font-size: 18px;
+  }
+}

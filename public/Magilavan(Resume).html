@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Magilavan (Resume)</title>
+    <style>
+      body { background: #0f172a; color: #fff; font-family: 'Poppins', sans-serif; padding: 2rem; }
+      .container { max-width: 900px; margin: auto; }
+      .controls { margin: 1rem 0; }
+      a.button { display:inline-block; padding:10px 14px; border-radius:8px; text-decoration:none; font-weight:600; background:#facc15; color:#000; }
+      .placeholder { margin-top:2rem; color:#94a3b8; }
+      embed { width:100%; height:900px; border-radius:8px; box-shadow:0 6px 18px rgba(0,0,0,0.5); }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1 style="color:#facc15; font-size:2rem;">Magilavan (Resume)</h1>
+      <div class="controls">
+        <a class="button" href="/Magilavan(Resume).pdf" target="_blank" rel="noopener noreferrer">Open PDF</a>
+        <a class="button" href="/Magilavan(Resume).pdf" download style="margin-left:12px; background:transparent; color:#facc15; border:1px solid rgba(255,255,255,0.08);">Download</a>
+      </div>
+
+      <!-- Try to embed the PDF; if not present the browser will show an error or the user can use the buttons above -->
+      <div class="viewer">
+        <embed src="/Magilavan(Resume).pdf" type="application/pdf">
+      </div>
+
+      <p class="placeholder">If the PDF is not yet available, add `Magilavan(Resume).pdf` to the project's `public/` folder and reload this page.</p>
+    </div>
+  </body>
+</html>
