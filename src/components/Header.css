@@ -54,3 +54,45 @@
   background: rgba(255,255,255,0.03);
   color: var(--accent);
 }
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .nav ul {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+  }
+  
+  .nav a {
+    font-size: 14px;
+  }
+  
+  .logo {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    padding: 10px 0;
+  }
+  
+  .nav ul {
+    gap: 10px;
+  }
+  
+  .nav a {
+    font-size: 13px;
+    padding: 5px 8px;
+  }
+  
+  .download-link {
+    padding: 4px 8px;
+    font-size: 12px;
+  }
+}

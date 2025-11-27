@@ -1,14 +1,9 @@
-import React, { useState, useEffect } from "react";
-import emailjs from '@emailjs/browser';
+import React, { useState } from "react";
 import "./ContactForm.css";
 
 function ContactForm() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [status, setStatus] = useState({ loading: false, ok: null, msg: "" });
-
-  useEffect(() => {
-    emailjs.init('b4kPJ13JdlHoWwSqz');
-  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -43,22 +38,39 @@ function ContactForm() {
       return;
     }
 
+    // Build payload with the field names expected by the /api/contact serverless function
+    const payload = {
+      from_name: form.name,
+      reply_to: form.email,
+      message: form.message
+    };
+
     try {
-      await emailjs.send(
-        'service_njrbgpg',
-        'template_b157ppr',
-        {
-          from_name: form.name,
-          from_email: form.email,
-          message: form.message,
-        }
-      );
-      
-      setForm({ name: "", email: "", message: "" });
-      setStatus({ loading: false, ok: true, msg: "Message sent successfully!" });
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      // Parse response safely (EmailJS or server may return empty or plain text)
+      const text = await res.text();
+      let data;
+      try { data = text ? JSON.parse(text) : null; } catch (parseErr) { data = text; }
+
+      if (res.ok) {
+        setForm({ name: "", email: "", message: "" });
+        setStatus({ loading: false, ok: true, msg: "Message sent successfully!" });
+        return;
+      }
+
+      // If not ok, show server-provided message (if any) or a fallback
+      const serverMsg = data?.error || data?.details || data || "Failed to send message";
+      setStatus({ loading: false, ok: false, msg: serverMsg });
+      return;
     } catch (error) {
-      console.error('EmailJS error:', error);
-      setStatus({ loading: false, ok: false, msg: "Failed to send message. Please try again." });
+      console.error("Network error:", error);
+      setStatus({ loading: false, ok: false, msg: "Network error. Please try again." });
+      return;
     }
   };
   // <-- end updated submit handler
